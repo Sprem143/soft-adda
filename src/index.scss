@@ -112,3 +112,25 @@ flex-direction: column;
   display: none;
 }
 
+@media screen and (max-width:760px) {
+  .login_field{
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.485);
+    // background-color: transparent;
+    input{
+      width: 45vw;
+    }
+    h2{
+      font-size:medium;
+    }
+  }
+  .loginForm{
+    background-image: url("/static/images/loginmobile.png");
+    background-size: contain
+  }
+  .logout_btn{
+    margin: 0!important;
+  }
+  }
+
+

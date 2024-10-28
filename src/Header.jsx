@@ -4,7 +4,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link, Outlet } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 function Header() {
@@ -25,8 +24,6 @@ function Header() {
           </Nav>
           <Nav>
 
-            <Nav.Link eventKey={2} href="#memes">
-            <div className="col-lg-4 col-sm-12 d-flex">
                 {/* <span className='animate__animated animate__pulse name' > {centerName}  </span> */}
                 <DropdownButton id="dropdown-basic-button" className='ms-3' style={{ zIndex: '10000' }} title="Login">
                   <Dropdown.Item >
@@ -44,8 +41,24 @@ function Header() {
                       <Link onClick={logoutAdmin}><span className='text-dark ms-3'>Log out</span></Link>
                   } */}
                 </DropdownButton>
-              </div>
-            </Nav.Link>
+              {/* </div> */}
+            {/* </Nav.Link> */}
+            <DropdownButton id="dropdown-basic-button" className='ms-3' style={{ zIndex: '10000' }} title="Sign up">
+                  <Dropdown.Item >
+                  <Link to="/adminsignup"><span className='tw'>Admin</span></Link>
+                    {/* {
+                      !isSuperAdminLogin ? <Link to="/superadminlogin"><span className='text-dark'>Super Admin</span></Link> :
+                        <Link onClick={logoutSuperAdmin}><span className='text-dark'>Log out</span></Link>
+                    } */}
+
+                  </Dropdown.Item>
+                  <Dropdown.Item ><Link to="/suppliersignup"><span className='tw'>Supplier</span></Link></Dropdown.Item>
+                  <Dropdown.Item ><Link to="/customersignup"><span className='tw'>Customer</span></Link></Dropdown.Item>
+                  {/* {
+                    !isAdminLogin ? <Dropdown.Item ><Link to="/adminlogin"><span className='text-dark'>Admin</span></Link></Dropdown.Item> :
+                      <Link onClick={logoutAdmin}><span className='text-dark ms-3'>Log out</span></Link>
+                  } */}
+                </DropdownButton>
           </Nav>
         </Navbar.Collapse>
       </Container>
