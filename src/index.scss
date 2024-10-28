@@ -1,0 +1,114 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+// ------common css------
+.dr{
+  display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+}
+.dc{
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+}
+.sb{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+a{
+  text-decoration: none !important;
+}
+p{
+  font-size: 1.2rem;
+}
+.tw{
+  color:white !important;
+}
+.jcse{
+justify-content: space-evenly !important;
+}
+.br50{
+  border-radius: 50%;
+}
+.fs1{
+  font-size: 1.1rem !important;
+}
+@mixin df{
+  display: flex;
+}
+.fs2{
+  font-size: 1.2rem !important;
+}
+.fs3{
+  font-size: 1.3rem !important;
+}
+.dfdr{
+  @include df;
+  flex-direction: row;
+}
+.dfdc{
+@include df;
+flex-direction: column;
+}
+.jcac{
+  @include df;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ----------Login page css */
+.loginForm {
+  height: auto;
+  width: 100%;
+  padding: 30px 0;
+  background-image: url('/static/images/login.png');
+  background-size:cover;
+}
+.login_field{
+  width: 50%;
+  background-color: rgba(0, 0, 0, 0.485);
+  border: 2px solid white;
+  box-shadow: 0px 0px 4px 4px rgb(218, 52, 191);
+  padding: 2rem; 
+  color: white;
+  border-radius: 7px;
+  font-size: 1.1rem;
+  h2{
+    color: white!important;
+  }
+  input{
+    border-radius: 5px;
+    padding: 3px;
+    margin: 5px 0;
+    width: 20vw;
+  }
+}
+.login_field:hover{
+  box-shadow: 0px 0px 6px 6px rgb(255, 0, 212);
+}
+.showForm{
+  display: none;
+}
+
