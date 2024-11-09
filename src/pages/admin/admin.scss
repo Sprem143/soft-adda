@@ -1,0 +1,123 @@
+.sadminheader{
+    height: 70px;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 0 20px grey;
+    // padding: 0 4vw;
+}
+.page{
+    min-height: 600px;
+    width: 100%;
+}
+.adminnav{
+    box-shadow: 0 0 20px gray;
+    position: fixed;
+    background: white;
+}
+.admins {
+    width: 235px;
+
+    background-color: midnightblue;
+    padding: 1vw 0vw 1vw 0;
+    ul li{
+        color: white;
+        list-style: none;
+        margin: 10px 0;
+    }
+}
+.admins a:hover{
+    color: red !important;
+    text-decoration: underline !important;
+}
+.adminbtn{
+width: 100%;
+background-color: transparent !important;
+}
+.adminname{
+    overflow: hidden !important;
+    max-width: 130px;
+}
+.addbtn{
+    border: 1px solid white;
+    padding: 10px 20px;
+    color: white;
+    margin-left: 2vw;
+}
+.addbtn:hover{
+    color:antiquewhite;
+    font-weight: bolder;
+}
+.addadminform{
+    //  margin-top: 80px;
+    height: auto;
+    padding: 2vw;
+    border: 2px solid grey;
+    border-radius: 12px;
+    margin: 2vw;
+}
+.notification_circle{
+    // display:flex;
+//    padding: 4px;
+height: 25px;
+width: 25px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    align-content: center;
+}
+.loginForm2{
+    width: 100%;
+    padding: 30px 0;
+    // background-image: url(/static/images/login.png);
+    background-size: cover;
+    top:30%;
+}
+.login_field2{
+    width: auto !important;
+    background-color: rgba(43, 48, 91, 0.935) !important;
+}
+.details-btn{
+    color: navy;
+    font-weight: bolder;
+}
+.updates{
+    border: 1px solid navy;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 128, 0.056);
+    padding: 2vw;
+    transition: 1s;
+}
+.updates:hover{
+    transform: scale(1.05);
+}
+.update_detail{
+    height: auto;
+    width: auto;
+    padding: 2vw;
+    border: 1px solid navy;
+    box-shadow: 0 0 20px navy;
+    position: absolute;
+    top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    background-color: white;
+z-index: 10000;
+}
+.newdetail{
+    background-color: rgb(232, 232, 255);
+    padding:10px 20px;
+}
+.olddetail{
+    background-color: rgb(235, 235, 235);
+    padding:10px 20px;
+}
+.formal_btn{
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+.formal_btn:hover{
+    color: yellow;
+    font-weight: bolder;
+    text-decoration: underline;
+}

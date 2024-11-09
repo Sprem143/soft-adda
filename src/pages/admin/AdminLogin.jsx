@@ -1,41 +1,95 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 export default function AdminLogin() {
+
+
     const navigate = useNavigate();
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState();
 
+
+
+    useEffect(() => {
+        if (localStorage.getItem('adminToken')) {
+          const adminToken=localStorage.getItem('adminToken');
+          verifyAdminToken(adminToken);
+        }
+      }, []);
+
+
+      const verifyAdminToken = async (token) => {
+        try {
+          console.log("verify token called");
+          
+          const result = await axios.post('http://localhost:7000/admin/authenticate', {}, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            }
+          });
+      
+          if (result.data.auth) {
+            navigate('/admin');
+          } else {
+            localStorage.removeItem('adminToken');
+          }
+        } catch (error) {
+          console.error('Token verification failed', error);
+        }
+      };
+    
      
     const diplayalert = ()=>{
         alert("Please contact admin to reset your password or username \n Mob- 7366943700 || Email- prem68265@gmail.com")
     }
+
+    const signup=async()=>{
+        try{
+           const adminName="admin";
+           const email="admin@gmail.com"
+           const mobile=7366943700
+           const password="admin@2024"
+           let result= await fetch('http://localhost:7000/admin/signup',{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({adminName,email,mobile,password})
+           });
+           alert(result.msg);   
+        }catch(err){
+            console.log(err)
+        }
+    }
     const handleLogin = async () => {
 
-        let result = await fetch("http://localhost:5000/admin/login", {
+        let result = await fetch("http://localhost:7000/admin/login", {
             method: "POST",
-            body: JSON.stringify({ adminName:username,password: password }),
+            body: JSON.stringify({email:email,password: password }),
             headers: { 'Content-Type': 'application/json' }
         });
         result = await result.json();
-        if (result.token) {
-            if(localStorage.getItem('superAdminToken')){
-                localStorage.removeItem('superAdminToken');
-                localStorage.removeItem('superadmin')
+        console.log(result)
+        if (result.login) {
+            if(localStorage.getItem('supplierToken')){
+                localStorage.removeItem('supplierToken');
+            }
+            if(localStorage.getItem('customerToken')){
+                localStorage.removeItem('customerToken');
             }
             localStorage.setItem('adminToken', result.token);
-            localStorage.setItem('admin',username);
-            navigate('/adminhome');
+            navigate('/admin');
         } else {
-            setLoginError(result.message)
+           alert(result.msg)
         }
     }
     // -----------
   
     return (
         <>
+        {/* <button onClick={signup}>Sign up</button> */}
             <div className="loginForm dfdc jcac w-100">
                 <div className="login_field dfdc jcac">
                     <h2 className="fw-bold login_title"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-lock" viewBox="0 0 16 16">
@@ -44,7 +98,7 @@ export default function AdminLogin() {
 
                     <div className="dfdc">
                         <label htmlFor="directorEmail">Enter Email</label>
-                        <input type="text" id="directorEmail" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="abc@gmail.com" />
+                        <input type="text" id="directorEmail" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="abc@gmail.com" />
                         <label htmlFor="directorPassword">Enter Password</label>
                         <input type="text" id="directorPassword" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="********" />
                         <input type="submit" value="Login" className="mt-3 btn btn-primary" onClick={handleLogin} />
